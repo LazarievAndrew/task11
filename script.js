@@ -5,7 +5,7 @@
 
 function input (){
     var num = +prompt('Введите любое натуральное число');
-    while (isNaN(num) || num <= 0) {
+    while (isNaN(num) || num <= 0 || !Number.isInteger(num)) {
         num = +prompt('Введите число корректно');
     }
     return num;
@@ -15,29 +15,31 @@ var number = input();
 
 // Решение с помощью циклов:
 
-for (var base = 1; base <= number; base *=2){
-    if (base === number){
-        alert ('// Цикл// Число является точной степенью двойки--"YES"');
-        break;
+function degreeСycle(x){
+    for (var base = 1; base <= x; base *=2){
+        if (base === x){
+            alert ('// Цикл// Число является точной степенью двойки--"YES"');
+            break;
+        }
     }
-}
 
-if(base > number){
-    alert ('//Цикл// Число не является точной степенью двойки--"NO"');
+    if(base > x){
+        alert ('//Цикл// Число не является точной степенью двойки--"NO"');
+    }
 }    
+
+degreeСycle(number);
 
 // Решение с помощью рекурсии:
 
-var x = 1;
-
-function degree (x) {
-    if (x === number){
+function degreeRecursion (x) {
+    if (x === 1){
         alert ('//Рекурсия// Число является точной степенью двойки--"YES"');
-    } else if (x < number){
-        degree(x*=2);
+    } else if (x > 1){
+        degreeRecursion(x/2);
     } else {
         alert ('//Рекурсия// Число не является точной степенью двойки--"NO"');
     }
 }
 
-degree(x);
+degreeRecursion(number);
