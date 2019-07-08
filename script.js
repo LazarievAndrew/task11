@@ -2,38 +2,36 @@
 // и выводить слово YES, если число является точной степенью двойки,
 // или слово NO в противном случае.
 
+var number = +prompt('Введите любое натуральное число');
+
 // Решение с помощью циклов:
 
-function degreeСycle(){
-    var number = +prompt('Введите любое натуральное число');
-    while (isNaN(number) || number <= 0 || !Number.isInteger(number)) {
-        number = +prompt('Введите число корректно');
+function degreeСycle(x){
+    while (isNaN(x) || x <= 0 || !Number.isInteger(x)) {
+        x = +prompt('Введите число корректно');
     }
-    for (var base = 1; base <= number; base *=2){
-        if (base === number){
+    for (var base = 1; base <= x; base *=2){
+        if (base === x){
             alert ('// Цикл// Число является точной степенью двойки--"YES"');
             break;
         }
     }
-    if(base > number){
+    if(base > x){
         alert ('//Цикл// Число не является точной степенью двойки--"NO"');
     }
 }    
 
-degreeСycle();
+degreeСycle(number);
 
 // Решение с помощью рекурсии:
-
-var number = +prompt('Введите любое натуральное число');
 
 function degreeRecursion (x) {
     while (isNaN(x) || x <= 0) {
         x = +prompt('Введите корректно любое натуральное число');
     }
-    var base = 1;
-    if (x === base){
+    if (x === 1){
         alert ('//Рекурсия// Число является точной степенью двойки--"YES"');
-    } else if (base < x){
+    } else if (x > 1){
         degreeRecursion(x / 2);   
     } else {
         alert ('//Рекурсия// Число не является точной степенью двойки--"NO"');
